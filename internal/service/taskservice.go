@@ -58,5 +58,6 @@ func (ts *TaskService) FetchAndStoreTasks() {
 func (ts *TaskService) GetTasks() []model.Task {
 	var tasks []model.Task
 	ts.db.Find(&tasks)
+	util.InfoLogger.Println("get tasks worked.", tasks)
 	return tasks
 }
