@@ -20,12 +20,17 @@ func main() {
 	}
 	defer db.Close()
 
+	util.InfoLogger.Println("Gorm Open worked.")
+
 	// Migrate the schema
 	db.AutoMigrate(&model.Task{})
+	util.InfoLogger.Println("AutoMigrate worked.")
 
 	// Fetch tasks and store in database
 	taskService := service.NewTaskService(db)
+	util.InfoLogger.Println("NewTaskService fetched.")
 	taskService.FetchAndStoreTasks()
+	util.InfoLogger.Println("NewTaskService fetched and stored.")
 
 	// Setup HTTP server
 	http.HandleFunc("/", handler.IndexHandler(taskService))
