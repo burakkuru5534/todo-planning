@@ -1,8 +1,6 @@
 package main
 
 import (
-	"github.com/burakkuru5534/todo-planning/database"
-	"github.com/burakkuru5534/todo-planning/handlers"
 	"log"
 	"net/http"
 
