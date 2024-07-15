@@ -6,7 +6,8 @@ import (
 
 type Task struct {
 	gorm.Model
-	Name       string `json:"name"`
-	Duration   int    `json:"duration"`
-	Difficulty int    `json:"difficulty"`
+	ID            int    `json:"id"`
+	Name          string `json:"name"`
+	DurationHours int    `json:"duration_hours"`
+	Difficulty    int    `json:"difficulty"`
 }

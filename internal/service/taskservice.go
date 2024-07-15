@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/burakkuru5534/todo-planning/internal/api"
 	"github.com/burakkuru5534/todo-planning/internal/model"
+	"github.com/burakkuru5534/todo-planning/internal/util"
 	"sync"
 
 	"github.com/jinzhu/gorm"
@@ -32,6 +33,7 @@ func (ts *TaskService) FetchAndStoreTasks() {
 		go func(p interface{ FetchTasks() ([]model.Task, error) }) {
 			defer wg.Done()
 			tasks, err := p.FetchTasks()
+			util.InfoLogger.Println("fetch tasks worked.", tasks)
 			if err != nil {
 				return
 			}
@@ -47,6 +49,8 @@ func (ts *TaskService) FetchAndStoreTasks() {
 	for tasks := range taskChan {
 		for _, task := range tasks {
 			ts.db.Create(&task)
+			util.InfoLogger.Println("create task worked.", task)
+
 		}
 	}
 }

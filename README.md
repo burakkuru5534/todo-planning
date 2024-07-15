@@ -11,5 +11,5 @@ This project is a task scheduler that distributes tasks fetched from two differe
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/myproject.git
-   cd myproject
+   git clone https://github.com/burakkuru5534/todo-planning.git
+   cd todo-planning

@@ -34,9 +34,9 @@ func (ts *TaskScheduler) ScheduleTasks() (map[string][]model.Task, int) {
 		assigned := false
 		for i := range ts.developers {
 			developer := &ts.developers[i]
-			if developer.MaxHours >= task.Duration {
+			if developer.MaxHours >= task.DurationHours {
 				developer.AssignedTasks = append(developer.AssignedTasks, task)
-				developer.MaxHours -= task.Duration
+				developer.MaxHours -= task.DurationHours
 				devTasks[developer.Name] = developer.AssignedTasks
 				assigned = true
 				break
@@ -50,7 +50,7 @@ func (ts *TaskScheduler) ScheduleTasks() (map[string][]model.Task, int) {
 			})
 			developer := &ts.developers[0]
 			developer.AssignedTasks = append(developer.AssignedTasks, task)
-			developer.MaxHours -= task.Duration
+			developer.MaxHours -= task.DurationHours
 			devTasks[developer.Name] = developer.AssignedTasks
 		}
 	}
